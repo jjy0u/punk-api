@@ -1,6 +1,7 @@
 import Card from "../../Card/Card";
 import React from 'react'
 import { Link } from "react-router-dom";
+import "./CardList.scss"
 
 const CardList = (props) => {
 
@@ -9,10 +10,9 @@ const CardList = (props) => {
     const cardsListJSX = beerArr.map((beer) => {
         return ( 
         <Link to={`/beer/${beer.id}`} key = {beer.id}>
-        <Card 
+        <Card
               image = {beer.image_url}
               title = {beer.name}
-              description = {beer.description}
               />
         </Link>
           )

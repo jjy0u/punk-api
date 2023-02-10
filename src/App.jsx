@@ -11,7 +11,7 @@ function App() {
         <Routes>
           <Route path='/beer/:beerId' element={<BeerInfo beerArr = {beers}/>}/>
 
-          <Route path='/' element={<CardList beerArr = {beers}/>}/>
+          <Route path='/' element={<CardList  beerArr = {beers} />}/>
         </Routes>
       </div>
     </Router>
