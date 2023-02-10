@@ -13,6 +13,7 @@ const CardList = (props) => {
         <Card
               image = {beer.image_url}
               title = {beer.name}
+              tagline = {beer.tagline}
               />
         </Link>
           )
