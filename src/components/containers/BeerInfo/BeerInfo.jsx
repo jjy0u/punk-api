@@ -37,7 +37,8 @@ const BeerInfo = (props) => {
         <p>Ingredients: {ingredientsArr.join(", ")}</p>
       </div>
       <div className='beer-info__bottom-info'>
-        <img className="beer-info__image" src={targetBeer.image_url}/>
+        <p className="beer-info__food-pair">Food Parings: </p>
+        <p className="beer-info__food-pair">Brewers Tips: </p>
       </div>
     </div>
   )
