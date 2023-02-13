@@ -6,14 +6,36 @@ const BeerInfo = (props) => {
     const {beerArr} = props
 
     const {beerId} = useParams()
-    console.log(beerId)
 
     const targetBeer = beerArr.filter((beer) => beer.id == beerId)[0]
 
-    console.log(targetBeer)
+
+    const hopsArr = targetBeer.ingredients.hops
+    const maltArr = targetBeer.ingredients.malt
+
+    const hopsNameArr = []
+    for (let index = 0; index < hopsArr.length; index++) {
+      hopsNameArr.push(hopsArr[index].name)
+    }
+
+
+
   return (
-    <div>
-      <img className="beer-info_image" src={targetBeer.image_url}/>
+    <div className='beer-info'>
+      <div className='beer-info__img-container'>
+        <img className="beer-info__image" src={targetBeer.image_url}/>
+      </div>
+      <div className='beer-info__right-info'>
+        <h3>{targetBeer.name}</h3>
+        <h4>{targetBeer.tagline}</h4>
+        <h5>First brewed: {targetBeer.first_brewed}</h5>
+        <p>{targetBeer.descrption}</p>
+        <p>ABV: {targetBeer.abv}%</p>
+        <p>Hops: {hopsNameArr.join(", ")}</p>
+      </div>
+      <div className='beer-info__bottom-info'>
+        <img className="beer-info__image" src={targetBeer.image_url}/>
+      </div>
     </div>
   )
 }
