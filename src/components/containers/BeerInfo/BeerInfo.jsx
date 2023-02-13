@@ -1,5 +1,6 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
+import "./BeerInfo.scss"
 
 const BeerInfo = (props) => {
     const {beerArr} = props
@@ -11,7 +12,9 @@ const BeerInfo = (props) => {
 
     console.log(targetBeer)
   return (
-    <div>BeerInfo</div>
+    <div>
+      <img className="beer-info_image" src={targetBeer.image_url}/>
+    </div>
   )
 }
 

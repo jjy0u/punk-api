@@ -1,10 +1,10 @@
 import './App.scss';
-import CardList from './components/containers/CardList/CardList';
 import beers from './data/punk';
 import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import BeerInfo from './components/containers/BeerInfo/BeerInfo';
-import SearchFilter from './components/SearchFilter/SearchFilter';
 import { useState } from 'react';
+import Nav from './components/Nav/Nav';
+import Main from './components/Main/Main';
 
 function App() {
 
@@ -19,13 +19,11 @@ function App() {
   return (
     <Router>
       <div className="App">
-
-      <SearchFilter handleInput={handleInput}/>
-
+      <Nav/>
         <Routes>
           <Route path='/beer/:beerId' element={<BeerInfo beerArr = {beers}/>}/>
 
-          <Route path='/' element={<CardList  beerArr = {filteredBeer} />}/>
+          <Route path='/' element={<Main  beerArr = {filteredBeer}  handleInput={handleInput} />}/>
         </Routes>
       </div>
     </Router>
