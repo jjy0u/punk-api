@@ -1,11 +1,15 @@
 import React from 'react'
+import FiltersList from '../containers/FiltersList/FiltersList'
 import SearchFilter from '../SearchFilter/SearchFilter'
+import "./SideNav.scss"
 
 const SideNav = (props) => {
-    const {handleInput} = props
+    const {handleInput, handleClick} = props
 
   return (
-    <div>        
+    <div className='side-nav'>        
+        <FiltersList handleClick={handleClick}/>
+
         <SearchFilter handleInput={handleInput}/>
     </div>
   )
