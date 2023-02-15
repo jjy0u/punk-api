@@ -1,6 +1,7 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
 import "./BeerInfo.scss"
+import FoodPairings from '../../FoodPairings/FoodPairings'
 
 const BeerInfo = (props) => {
     const {beerArr} = props
@@ -21,6 +22,18 @@ const BeerInfo = (props) => {
 
     const ingredientsArr = Object.keys(targetBeer.ingredients)
 
+    const foodPairingsArr = targetBeer.food_pairing
+
+const foodListJSX = foodPairingsArr.map((food) => {
+  return ( 
+  <FoodPairings
+        food = {food}
+        />
+    )
+})
+
+console.log(foodListJSX)
+
   return (
     <div className='beer-info'>
       <div className='beer-info__img-container'>
@@ -37,7 +50,7 @@ const BeerInfo = (props) => {
         <p>Ingredients: {ingredientsArr.join(", ")}</p>
       </div>
       <div className='beer-info__bottom-info'>
-        <p className="beer-info__food-pair">Food Parings: </p>
+        <ul className="beer-info__food-pair">Food Parings: {foodListJSX} </ul>
         <p className="beer-info__food-pair">Brewers Tips: </p>
       </div>
     </div>
