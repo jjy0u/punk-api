@@ -11,6 +11,7 @@ const App = () => {
   const [filteredBeer, setFilteredBeer] = useState()
   const [beerABV, setBeerABV] = useState("0")
   const [beerClassic, setBeerClassic] = useState("02-2023")
+  const [checked,setChecked] = useState(false)
 
 
   const getBeers = async () => {
@@ -31,13 +32,18 @@ const App = () => {
   setFilteredBeer(filteredArray)
   }
 
-  const handleClick = (event) => {
-    if (event.target.innerHTML.includes("ABV")) {
+  const handleCheck = (event) => {  
+    console.log(event.target.value)  
+    if (event.target.value ==="abv" && checked === false) {
       setBeerABV(6)
-    } 
-    if (event.target.innerHTML.includes("Classic")) {
+      setChecked(true)
+    } else {
+      setBeerABV("0")
+      setChecked(false)
+    }
+    if (event.target.value === "classic") {
       setBeerClassic("12-2010")
-    } 
+    }
     //if (event.target.innerHTML.includes("Acid")) {
     //  setBeerABV(6)
     //}
@@ -58,7 +64,7 @@ const App = () => {
           element={<Main  
           beerArr = {filteredBeer? filteredBeer : beers}  
           handleInput={handleInput}
-          handleClick={handleClick}/>} /> 
+          handleCheck={handleCheck}/>} /> 
         </Routes>
       </div>
     </Router>

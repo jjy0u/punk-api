@@ -1,14 +1,25 @@
-import Button from "../../Button/Button";
 import React from 'react'
 import "./FiltersList.scss"
 
 const FiltersList = (props) => {
-    const {handleClick} = props
+    const {handleCheck} = props
   return (
     <div className="filter">
-        <Button className = "filter__button filter__button--ABV" handleClick = {handleClick} buttonText="High Alcohol (ABV>6%)" />
-        <Button className = "filter__button filter__button--classic" handleClick = {handleClick} buttonText="Classic Range" />
-        <Button className = "filter__button filter__button--acid" handleClick = {handleClick} buttonText="High Acidity (pH<4)" />
+      <div className = "filter__button filter__button--ABV">
+        <input type="checkbox" id="ABV" onClick = {handleCheck} value="abv"/>
+        <label htmlFor="ABV">High Alcohol (ABV{">"}6%)</label>
+      </div>
+
+      <div className = "filter__button filter__button--classic">
+        <input type="checkbox" id="classic" onClick = {handleCheck} value="classic"/>
+        <label htmlFor="classic">Classic Range</label>
+      </div>
+
+      <div className = "filter__button filter__button--acid">
+        <input type="checkbox" id="acid" onClick = {handleCheck} value="acid"/>
+        <label htmlFor="acid">High Acidity (ph{"<"}4)</label>
+      </div>
+
     </div>
   )
 }

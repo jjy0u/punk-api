@@ -1,6 +1,19 @@
 .beer-info{
-    display: flex;
+    margin: 150px;
+    margin-top: 50px;    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    
     &__image{
-        height: 500px;
+        height: 450px;
+    }
+
+    &__img-container{
+        background-color: #F5F5F5;
+        height: 600px;
+        width: 600px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 }

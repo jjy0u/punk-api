@@ -4,11 +4,11 @@ import SearchFilter from '../SearchFilter/SearchFilter'
 import "./SideNav.scss"
 
 const SideNav = (props) => {
-    const {handleInput, handleClick} = props
+    const {handleInput, handleCheck} = props
 
   return (
     <div className='side-nav'>        
-        <FiltersList handleClick={handleClick}/>
+        <FiltersList handleCheck={handleCheck}/>
 
         <SearchFilter handleInput={handleInput}/>
     </div>
