@@ -1,4 +1,5 @@
 import React from 'react'
+import "./FoodPairings.scss"
 
 const FoodPairings = (props) => {
     const {food} = props

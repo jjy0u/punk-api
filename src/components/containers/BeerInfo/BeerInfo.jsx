@@ -4,35 +4,32 @@ import "./BeerInfo.scss"
 import FoodPairings from '../../FoodPairings/FoodPairings'
 
 const BeerInfo = (props) => {
-    const {beerArr} = props
-    const {beerId} = useParams()
-    const targetBeer = beerArr.filter((beer) => beer.id == beerId)[0]
-    const hopsArr = targetBeer.ingredients.hops
-    const maltArr = targetBeer.ingredients.malt
+  const {beerArr} = props
+  const {beerId} = useParams()
+  const targetBeer = beerArr.filter((beer) => beer.id == beerId)[0]
+  const hopsArr = targetBeer.ingredients.hops
+  const maltArr = targetBeer.ingredients.malt
+  const ingredientsArr = Object.keys(targetBeer.ingredients)
+  const foodPairingsArr = targetBeer.food_pairing
 
-    const hopsNameArr = []
-    for (let index = 0; index < hopsArr.length; index++) {
-      hopsNameArr.push(hopsArr[index].name)
-    }
 
-    const maltNameArr = []
-    for (let index = 0; index < maltArr.length; index++) {
-      maltNameArr.push(maltArr[index].name)
-    }
+  const hopsNameArr = []
+  for (let index = 0; index < hopsArr.length; index++) {
+    hopsNameArr.push(hopsArr[index].name)
+  }
 
-    const ingredientsArr = Object.keys(targetBeer.ingredients)
+  const maltNameArr = []
+  for (let index = 0; index < maltArr.length; index++) {
+    maltNameArr.push(maltArr[index].name)
+  }
 
-    const foodPairingsArr = targetBeer.food_pairing
-
-const foodListJSX = foodPairingsArr.map((food) => {
-  return ( 
-  <FoodPairings
-        food = {food}
-        />
-    )
-})
-
-console.log(foodListJSX)
+  const foodListJSX = foodPairingsArr.map((food) => {
+    return ( 
+    <FoodPairings
+          food = {food}
+    />
+      )
+  })
 
   return (
     <div className='beer-info'>
@@ -51,7 +48,7 @@ console.log(foodListJSX)
       </div>
       <div className='beer-info__bottom-info'>
         <ul className="beer-info__food-pair">Food Parings: {foodListJSX} </ul>
-        <p className="beer-info__food-pair">Brewers Tips: </p>
+        <p className="beer-info__food-pair">Brewers Tips:{targetBeer.brewers_tips} </p>
       </div>
     </div>
   )
