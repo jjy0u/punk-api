@@ -8,31 +8,37 @@ import { useEffect } from 'react';
 
 const App = () => {
   const [beers, setBeers] = useState([])
-  const [searchFilteredBeer, setSearchFilteredBeer] = useState()
+  const [searchFilteredBeer, setSearchFilteredBeer] = useState(".")
   const [beerABV, setBeerABV] = useState("0")
   const [beerClassic, setBeerClassic] = useState("02-2023")
+  const [beerAcid, setBeerAcid] = useState("")
   const [abvChecked,setAbvChecked] = useState(false)
   const [classicChecked,setClassicChecked] = useState(false)
-  //const [acidChecked,setAcidChecked] = useState(false)
+  const [acidChecked,setAcidChecked] = useState(false)
 
 
 
   const getBeers = async () => {
     const url = "https://api.punkapi.com/v2/beers";
-    const res = await fetch(url + `?abv_gt=${beerABV}` + `&brewed_before=${beerClassic}`);
+    const res = await fetch(url + `?abv_gt=${beerABV}` + `&brewed_before=${beerClassic}` +  `&beer_name=${searchFilteredBeer}`);
+    console.log(res)
     const data = await res.json();
     console.log("this is data", data)
     setBeers(data)
   };
 
   useEffect(() =>{
-    getBeers(beerABV, beerClassic)
-  }, [beerABV, beerClassic])
+    getBeers(beerABV, beerClassic, searchFilteredBeer)
+  }, [beerABV, beerClassic, searchFilteredBeer])
 
   const handleInput = (event) => {
-  const searchTerm = event.target.value.toLowerCase()
-  const searchFilteredArray = beers.filter(beer => beer.name.toLowerCase().includes(searchTerm))
-  setSearchFilteredBeer(searchFilteredArray)
+    let searchTerm = "."
+    if(event.target.value == ""){
+      searchTerm = "."
+    } else{
+      searchTerm = event.target.value.replaceAll(" ", "_")
+    }
+    setSearchFilteredBeer(searchTerm)
   }
 
   const handleCheck = (event) => {  
@@ -52,9 +58,13 @@ const App = () => {
       setClassicChecked(false)
 
     }
-    //if (event.target.innerHTML.includes("Acid")) {
-    //  setBeerABV(6)
-    //}
+    if (event.target.value === "acid" && acidChecked === false) {
+      const acidFilteredArray = beers.filter(beer => beer.ph >= 6)
+      setBeerAcid(acidFilteredArray) 
+      setAcidChecked = true
+      } else if (event.target.value === "acid") {
+       setBeerAcid(0)
+      }
   }
 
   return (
@@ -70,7 +80,7 @@ const App = () => {
           <Route 
           path='/' 
           element={<Main  
-          beerArr = {searchFilteredBeer? searchFilteredBeer : beers}  
+          beerArr = {beers}
           handleInput={handleInput}
           handleCheck={handleCheck}/>} /> 
         </Routes>
