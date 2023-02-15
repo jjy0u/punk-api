@@ -8,10 +8,13 @@ import { useEffect } from 'react';
 
 const App = () => {
   const [beers, setBeers] = useState([])
-  const [filteredBeer, setFilteredBeer] = useState()
+  const [searchFilteredBeer, setSearchFilteredBeer] = useState()
   const [beerABV, setBeerABV] = useState("0")
   const [beerClassic, setBeerClassic] = useState("02-2023")
-  const [checked,setChecked] = useState(false)
+  const [abvChecked,setAbvChecked] = useState(false)
+  const [classicChecked,setClassicChecked] = useState(false)
+  //const [acidChecked,setAcidChecked] = useState(false)
+
 
 
   const getBeers = async () => {
@@ -28,21 +31,26 @@ const App = () => {
 
   const handleInput = (event) => {
   const searchTerm = event.target.value.toLowerCase()
-  const filteredArray = beers.filter(beer => beer.name.toLowerCase().includes(searchTerm))
-  setFilteredBeer(filteredArray)
+  const searchFilteredArray = beers.filter(beer => beer.name.toLowerCase().includes(searchTerm))
+  setSearchFilteredBeer(searchFilteredArray)
   }
 
   const handleCheck = (event) => {  
-    console.log(event.target.value)  
-    if (event.target.value ==="abv" && checked === false) {
+    if (event.target.value ==="abv" && abvChecked === false) {
       setBeerABV(6)
-      setChecked(true)
-    } else {
+      setAbvChecked(true)
+    } else if (event.target.value ==="abv") {
       setBeerABV("0")
-      setChecked(false)
+      setAbvChecked(false)
     }
-    if (event.target.value === "classic") {
+
+    if (event.target.value === "classic" && classicChecked === false) {
       setBeerClassic("12-2010")
+      setClassicChecked(true)
+    } else if (event.target.value ==="classic"){
+      setBeerClassic("02-2023")
+      setClassicChecked(false)
+
     }
     //if (event.target.innerHTML.includes("Acid")) {
     //  setBeerABV(6)
@@ -62,7 +70,7 @@ const App = () => {
           <Route 
           path='/' 
           element={<Main  
-          beerArr = {filteredBeer? filteredBeer : beers}  
+          beerArr = {searchFilteredBeer? searchFilteredBeer : beers}  
           handleInput={handleInput}
           handleCheck={handleCheck}/>} /> 
         </Routes>
