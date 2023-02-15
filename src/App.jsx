@@ -16,8 +16,6 @@ const App = () => {
   const [classicChecked,setClassicChecked] = useState(false)
   const [acidChecked,setAcidChecked] = useState(false)
 
-
-
   const getBeers = async () => {
     const url = "https://api.punkapi.com/v2/beers";
     const res = await fetch(url + `?abv_gt=${beerABV}` + `&brewed_before=${beerClassic}` +  `&beer_name=${searchFilteredBeer}`);
@@ -56,15 +54,16 @@ const App = () => {
     } else if (event.target.value ==="classic"){
       setBeerClassic("02-2023")
       setClassicChecked(false)
-
     }
+
     if (event.target.value === "acid" && acidChecked === false) {
-      const acidFilteredArray = beers.filter(beer => beer.ph >= 6)
+      const acidFilteredArray = beers.filter(beer => beer.ph <= 4)
       setBeerAcid(acidFilteredArray) 
-      setAcidChecked = true
-      } else if (event.target.value === "acid") {
-       setBeerAcid(0)
-      }
+      setAcidChecked(true)
+    } else if (event.target.value === "acid") {
+      setBeerAcid(false)
+      setAcidChecked(false)
+    }
   }
 
   return (
@@ -80,7 +79,7 @@ const App = () => {
           <Route 
           path='/' 
           element={<Main  
-          beerArr = {beers}
+          beerArr = {beerAcid? beerAcid :beers}
           handleInput={handleInput}
           handleCheck={handleCheck}/>} /> 
         </Routes>
