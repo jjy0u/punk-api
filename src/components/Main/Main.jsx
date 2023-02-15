@@ -4,11 +4,11 @@ import SideNav from '../SideNav/SideNav'
 import "./Main.scss"
 
 const Main = (props) => {
-    const {beerArr, handleInput, handleCheck} = props
+    const {beerArr, handleInput, handleCheck, checkClass} = props
 
   return (
     <div className='main'>
-        <SideNav handleInput={handleInput} handleCheck={handleCheck}/>
+        <SideNav handleInput={handleInput} handleCheck={handleCheck} checkClass={checkClass}/>
         <CardList  beerArr = {beerArr} />
     </div>
   )
