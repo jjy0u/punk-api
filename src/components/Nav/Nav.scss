@@ -3,9 +3,6 @@
     height: 70px;
     background-color: #009BC8;
 
-    //display: flex;
-    //align-items: center;
-
     &__img-container{
         width: 100%;
         display: flex;
@@ -13,8 +10,9 @@
     }
 
     &__home{
+        width: 60px;
         position: relative;
-        font-size: 20px;
+        font-size: 18px;
         padding-left: 100px;
         top: 20px;
 
@@ -26,8 +24,9 @@
         top:-16px;
         padding-right: 10px;
     }
-}
 
-a{
-    color: black;
+    a{
+        width: 5px;
+        color: black;
+    }
 }
