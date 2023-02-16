@@ -1,5 +1,5 @@
 .quick-look {
-    background-color: pink;
+    background-color: white;
     position: fixed;
     top: 0;
     left: 0;
@@ -29,17 +29,16 @@
   
   @media screen and (min-width: 992px) {
     .quick-look {
-      background-color: rgba(0,0,0,0.8);
+      background-color: rgba(0,0,0,0.5);
       display: flex;
       justify-content: center;
       align-items: center;
   
       &__content {
         position: relative;
-        background-color: pink;
-        width: 30%;
-        height: 30vw;
-        border-radius: 15px;
+        background-color: white;
+        width: 60%;
+        height: 40vw;
       }
   
       &__cross {

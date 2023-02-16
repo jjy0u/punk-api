@@ -4,7 +4,7 @@ import './Card.scss'
 import { useState } from 'react'
 
 const Card = (props) => {
-    const {image, title, tagline} = props
+    const {image, title, tagline, toggleQuickLook} = props
 
     const [showText, setShowText] = useState(false);
 
@@ -15,7 +15,7 @@ const Card = (props) => {
   return (
     <div className= 'card' onMouseEnter={handleHover} onMouseLeave={handleHover}>
         <img className='card__image' src={image} alt={title} />
-        {showText && <CardInfo title={title} tagline={tagline}/>}
+        {showText && <CardInfo title={title} tagline={tagline} toggleQuickLook={toggleQuickLook}/>}
     </div>
   )
 }

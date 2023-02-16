@@ -5,7 +5,7 @@ import "./CardList.scss"
 
 const CardList = (props) => {
 
-    const {beerArr} = props
+    const {beerArr, toggleQuickLook} = props
 
     const cardsListJSX = beerArr.map((beer) => {
         return ( 
@@ -14,6 +14,7 @@ const CardList = (props) => {
               image = {beer.image_url}
               title = {beer.name}
               tagline = {beer.tagline}
+              toggleQuickLook = {toggleQuickLook}
               />
         </Link>
           )

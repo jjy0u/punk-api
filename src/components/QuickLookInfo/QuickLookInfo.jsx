@@ -4,7 +4,7 @@ import "./QuickLookInfo.scss"
 
 
 const QuickLookInfo = (props) => {
-    const {image, toggleQuickLook} = props
+    const {image, title, toggleQuickLook} = props
   return (
     <div className='quick-look'>
         <div className='quick-look__content'>
@@ -14,7 +14,12 @@ const QuickLookInfo = (props) => {
             className="quick-look__cross"
             onClick={toggleQuickLook}
             />
-            <img src={image} alt="whatever" />
+            <div className='quick-look__img-container'>
+                <img className='quick-look__image' src={image} alt= {title}/>
+            </div>
+            <div className='quick-look__info'>
+                <h1></h1>
+            </div>
         </div>
     </div>
   )
