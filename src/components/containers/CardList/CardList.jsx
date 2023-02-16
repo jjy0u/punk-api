@@ -14,6 +14,7 @@ const CardList = (props) => {
               image = {beer.image_url}
               title = {beer.name}
               tagline = {beer.tagline}
+              description = {beer.description}
               toggleQuickLook = {toggleQuickLook}
               />
         </Link>

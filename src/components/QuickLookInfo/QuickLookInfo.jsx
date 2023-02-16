@@ -1,10 +1,11 @@
 import React from 'react'
 import blackCross from "../../assets/images/black-cross.png";
+import Button from '../Button/Button';
 import "./QuickLookInfo.scss"
 
 
 const QuickLookInfo = (props) => {
-    const {image, title, toggleQuickLook} = props
+    const {image, title, tagline, description, toggleQuickLook} = props
   return (
     <div className='quick-look'>
         <div className='quick-look__content'>
@@ -18,7 +19,11 @@ const QuickLookInfo = (props) => {
                 <img className='quick-look__image' src={image} alt= {title}/>
             </div>
             <div className='quick-look__info'>
-                <h1></h1>
+                <h3 className='quick-look__name'>{title}</h3>
+                <h4 className='quick-look__tagline'>{tagline}</h4>
+                <p className='quick-look__description'>{description}</p>
+                <Button/>
+
             </div>
         </div>
     </div>
