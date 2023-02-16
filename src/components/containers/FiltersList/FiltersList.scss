@@ -35,11 +35,8 @@
   outline:0;
 }
 
-.filter__checkbox:active + label {
-  background-color: #ddd;
-}
-.filter__label:checked {
-  border-color:black;
-  background-color: black;
-  color: white;
+.checked{
+    background-color: black;
+    border-color: black;
+    color: white;
 }

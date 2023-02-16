@@ -16,6 +16,11 @@ const App = () => {
   const [classicChecked,setClassicChecked] = useState(false)
   const [acidChecked,setAcidChecked] = useState(false)
 
+  const [abvClassName, setAbvClassName] = useState(false)
+  const [classicClassName, setClassicClassName] = useState(false)
+  const [acidClassName, setAcidClassName] = useState(false)
+
+
   const getBeers = async () => {
     const url = "https://api.punkapi.com/v2/beers";
     const res = await fetch(url + `?abv_gt=${beerABV}` + `&brewed_before=${beerClassic}` +  `&beer_name=${searchFilteredBeer}`);
@@ -39,30 +44,37 @@ const App = () => {
     setSearchFilteredBeer(searchTerm)
   }
 
+
   const handleCheck = (event) => {  
     if (event.target.value ==="abv" && abvChecked === false) {
       setBeerABV(6)
       setAbvChecked(true)
+      setAbvClassName(true)
     } else if (event.target.value ==="abv") {
       setBeerABV("0")
       setAbvChecked(false)
+      setAbvClassName(false) 
     }
 
     if (event.target.value === "classic" && classicChecked === false) {
       setBeerClassic("12-2010")
       setClassicChecked(true)
+      setClassicClassName(true)
     } else if (event.target.value ==="classic"){
       setBeerClassic("02-2023")
       setClassicChecked(false)
+      setClassicClassName(false)
     }
 
     if (event.target.value === "acid" && acidChecked === false) {
       const acidFilteredArray = beers.filter(beer => beer.ph <= 4)
       setBeerAcid(acidFilteredArray) 
       setAcidChecked(true)
+      setAcidClassName(true)
     } else if (event.target.value === "acid") {
       setBeerAcid(false)
       setAcidChecked(false)
+      setAcidClassName(false)
     }
   }
 
@@ -81,7 +93,11 @@ const App = () => {
           element={<Main  
           beerArr = {beerAcid? beerAcid :beers}
           handleInput={handleInput}
-          handleCheck={handleCheck}/>} /> 
+          handleCheck={handleCheck}
+          checkAbvClass={abvClassName}
+          checkClassicClass={classicClassName}
+          checkAcidClass ={acidClassName}/>} 
+          /> 
         </Routes>
       </div>
     </Router>
