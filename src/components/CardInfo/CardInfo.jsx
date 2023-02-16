@@ -1,8 +1,9 @@
 import React from 'react'
 import "./CardInfo.scss"
+import Button from '../Button/Button'
 
 const CardInfo = (props) => {
-    const {title, tagline} = props
+    const {title, tagline, toggleQuickLook} = props
 
   return (
     <div className='card__info'>
@@ -10,7 +11,7 @@ const CardInfo = (props) => {
             <h3 className='card__name'>{title}</h3>
             <h4 className='card__tagline'>{tagline}</h4>
         </div>
-        <button className='card__button'>Quick Look</button>
+        <Button className='card__button' buttonText="Quick Look" handleClick={toggleQuickLook}/>
     </div>
   )
 }
