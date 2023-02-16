@@ -43,8 +43,8 @@ const BeerInfo = (props) => {
         <p>{targetBeer.descrption}</p>
         <p>ABV: {targetBeer.abv}%</p>
         <p>pH: {targetBeer.ph ? targetBeer.ph : "NA"}</p>
-        <p>Hops: {hopsNameArr.join(", ")}</p>
-        <p>Malt: {maltNameArr.join(", ")}</p>
+        <p>Hops: {[...new Set(hopsNameArr)].join(", ")}</p>
+        <p>Malt: {[...new Set(maltNameArr)].join(", ")}</p>
         <p>Ingredients: {ingredientsArr.join(", ")}</p>
       </div>
       <div className='beer-info__bottom-info'>
