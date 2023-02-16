@@ -10,10 +10,10 @@
     }
 
     &__home{
-        width: 60px;
         position: relative;
         font-size: 18px;
-        padding-left: 100px;
+        font-weight: bold;
+        margin-left: 100px;
         top: 20px;
 
     }
@@ -26,7 +26,6 @@
     }
 
     a{
-        width: 5px;
         color: black;
     }
 }
