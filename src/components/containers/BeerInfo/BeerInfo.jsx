@@ -49,7 +49,7 @@ const BeerInfo = (props) => {
       </div>
       <div className='beer-info__bottom-info'>
         <ul className="beer-info__food-pair"><span>Food Parings:</span> {foodListJSX} </ul>
-        <p className="beer-info__food-pair"><span>Brewers Tips:</span> {targetBeer.brewers_tips} </p>
+        <p className="beer-info__tips"><span>Brewers Tips:</span> {targetBeer.brewers_tips} </p>
       </div>
     </div>
   )

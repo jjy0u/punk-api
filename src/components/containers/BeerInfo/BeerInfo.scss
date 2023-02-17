@@ -28,7 +28,7 @@
         font-size: 20px;
     }
 
-    p{
+    p, li{
         margin-bottom: 10px;
         font-weight: 500;
     }
@@ -43,6 +43,14 @@
 
     span{
         font-weight: 700;
+    }
+
+    &__food-pair{
+        margin-bottom: 30px;
+    }
+
+    &__tips{
+        line-height: 25px;
     }
 }
 
@@ -65,6 +73,10 @@
 
         &__right-info{
             width: 570px;
+        }
+
+        &__bottom-info{
+            width: 500px;
         }
     }
 }
