@@ -12,6 +12,7 @@ const App = () => {
   const [beerABV, setBeerABV] = useState("0")
   const [beerClassic, setBeerClassic] = useState("02-2023")
   const [beerAcid, setBeerAcid] = useState("")
+
   const [abvChecked,setAbvChecked] = useState(false)
   const [classicChecked,setClassicChecked] = useState(false)
   const [acidChecked,setAcidChecked] = useState(false)
@@ -20,18 +21,16 @@ const App = () => {
   const [classicClassName, setClassicClassName] = useState(false)
   const [acidClassName, setAcidClassName] = useState(false)
 
-
   const getBeers = async () => {
     const url = "https://api.punkapi.com/v2/beers";
     const res = await fetch(url + `?abv_gt=${beerABV}` + `&brewed_before=${beerClassic}` +  `&beer_name=${searchFilteredBeer}`);
-    console.log(res)
     const data = await res.json();
     console.log("this is data", data)
     setBeers(data)
   };
 
   useEffect(() =>{
-    getBeers(beerABV, beerClassic, searchFilteredBeer)
+    getBeers()
   }, [beerABV, beerClassic, searchFilteredBeer])
 
   const handleInput = (event) => {
@@ -44,18 +43,13 @@ const App = () => {
     setSearchFilteredBeer(searchTerm)
   }
 
-  console.log("beerAcid", beerAcid)
-
   const handleCheck = (event) => {  
 
     if(event.target.value ==="abv" && !abvChecked && acidChecked){
-      setBeerAcid("") 
-      setBeerABV(6)
       setAbvChecked(true)
       setAbvClassName(true)
-      const acidFilteredArray = beers.filter(beer => beer.ph <= 4)
-      setBeerAcid(acidFilteredArray) 
-      
+      const acidFilteredArray = beers.filter(beer => beer.ph <= 4 && beer.abv >6)
+      setBeerAcid(acidFilteredArray)
     }else if (event.target.value ==="abv" && !abvChecked) {
       setBeerABV(6)
       setAbvChecked(true)
@@ -64,9 +58,18 @@ const App = () => {
       setBeerABV("0")
       setAbvChecked(false)
       setAbvClassName(false) 
+      if(acidChecked){
+        const acidFilteredArray = beers.filter(beer => beer.ph <=4)
+        setBeerAcid(acidFilteredArray)
+      }
     }
 
-    if (event.target.value === "classic" && !classicChecked) {
+    if(event.target.value ==="classic" && !classicChecked && acidChecked){
+      setClassicChecked(true)
+      setClassicClassName(true)
+      const acidFilteredArray = beers.filter(beer => beer.ph <= 4 && beer.first_brewed.at(-2)=== "0" )
+      setBeerAcid(acidFilteredArray)
+    } else if (event.target.value === "classic" && !classicChecked) {
       setBeerClassic("12-2010")
       setClassicChecked(true)
       setClassicClassName(true)
@@ -74,6 +77,10 @@ const App = () => {
       setBeerClassic("02-2023")
       setClassicChecked(false)
       setClassicClassName(false)
+      if(acidChecked){
+        const acidFilteredArray = beers.filter(beer => beer.ph <=4)
+        setBeerAcid(acidFilteredArray)
+      }
     }
 
     if (event.target.value === "acid" && !acidChecked) {

@@ -1,6 +1,15 @@
 .filter{
     display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
     gap: 10px;
+}
+
+
+@media screen and (min-width: 768px) {
+  .filter{
+    flex-direction: row;
+  }
 }
 
 .filter__label {
