@@ -34,17 +34,36 @@ const App = () => {
   }, [beerABV, beerClassic, searchFilteredBeer])
 
   const handleInput = (event) => {
-    let searchTerm = "."
-    if(event.target.value === ""){
-      searchTerm = "."
-    } else{
-      searchTerm = event.target.value.replaceAll(" ", "_")
+    if(acidChecked) {
+      if (!classicChecked && abvChecked){
+        const searchTerm = event.target.value.toLowerCase()
+        const searchFilteredArray = beers.filter(beer => beer.name.toLowerCase().includes(searchTerm) && beer.ph <= 4 && beer.abv >6)
+        setBeerAcid(searchFilteredArray)
+      } else if (classicChecked && !abvChecked){
+          const searchTerm = event.target.value.toLowerCase()
+          const searchFilteredArray = beers.filter(beer => beer.name.toLowerCase().includes(searchTerm) && beer.ph <= 4 && beer.first_brewed.at(-2)=== "0")
+          setBeerAcid(searchFilteredArray)
+      } else if (classicChecked && abvChecked){
+        const searchTerm = event.target.value.toLowerCase()
+        const searchFilteredArray = beers.filter(beer => beer.name.toLowerCase().includes(searchTerm) && beer.ph <= 4 && beer.abv >6 && beer.first_brewed.at(-2)=== "0")
+        setBeerAcid(searchFilteredArray)
+      }else{
+          const searchTerm = event.target.value.toLowerCase()
+          const searchFilteredArray = beers.filter(beer => beer.name.toLowerCase().includes(searchTerm) && beer.ph <= 4)
+          setBeerAcid(searchFilteredArray)
+      }
+    }else {
+      let searchTerm = "."
+      if(event.target.value === ""){
+        searchTerm = "."
+      } else{
+        searchTerm = event.target.value.replaceAll(" ", "_")
+      }
+      setSearchFilteredBeer(searchTerm)
     }
-    setSearchFilteredBeer(searchTerm)
   }
 
   const handleCheck = (event) => {  
-
     if(event.target.value ==="abv" && !abvChecked && acidChecked){
       setAbvChecked(true)
       setAbvClassName(true)
