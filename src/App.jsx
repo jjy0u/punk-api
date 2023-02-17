@@ -48,8 +48,13 @@ const App = () => {
     if(event.target.value ==="abv" && !abvChecked && acidChecked){
       setAbvChecked(true)
       setAbvClassName(true)
-      const acidFilteredArray = beers.filter(beer => beer.ph <= 4 && beer.abv >6)
-      setBeerAcid(acidFilteredArray)
+      if(classicChecked) {
+        const acidFilteredArray = beers.filter(beer => beer.ph <= 4 && beer.abv >6 && beer.first_brewed.at(-2)=== "0")
+        setBeerAcid(acidFilteredArray)
+      } else {
+        const acidFilteredArray = beers.filter(beer => beer.ph <= 4 && beer.abv >6)
+        setBeerAcid(acidFilteredArray)
+      }
     }else if (event.target.value ==="abv" && !abvChecked) {
       setBeerABV(6)
       setAbvChecked(true)
@@ -58,17 +63,26 @@ const App = () => {
       setBeerABV("0")
       setAbvChecked(false)
       setAbvClassName(false) 
-      if(acidChecked){
+      if(acidChecked && classicChecked){
+        const acidFilteredArray = beers.filter(beer => beer.ph <=4 && beer.first_brewed.at(-2)=== "0")
+        setBeerAcid(acidFilteredArray)
+      } else if (acidChecked){
         const acidFilteredArray = beers.filter(beer => beer.ph <=4)
         setBeerAcid(acidFilteredArray)
       }
     }
 
+
     if(event.target.value ==="classic" && !classicChecked && acidChecked){
       setClassicChecked(true)
       setClassicClassName(true)
-      const acidFilteredArray = beers.filter(beer => beer.ph <= 4 && beer.first_brewed.at(-2)=== "0" )
-      setBeerAcid(acidFilteredArray)
+      if(abvChecked) {
+        const acidFilteredArray = beers.filter(beer => beer.ph <= 4 && beer.abv >6 && beer.first_brewed.at(-2)=== "0")
+        setBeerAcid(acidFilteredArray)
+      } else {
+        const acidFilteredArray = beers.filter(beer => beer.ph <= 4 && beer.first_brewed.at(-2)=== "0")
+        setBeerAcid(acidFilteredArray)
+      }
     } else if (event.target.value === "classic" && !classicChecked) {
       setBeerClassic("12-2010")
       setClassicChecked(true)
@@ -78,6 +92,13 @@ const App = () => {
       setClassicChecked(false)
       setClassicClassName(false)
       if(acidChecked){
+        const acidFilteredArray = beers.filter(beer => beer.ph <=4)
+        setBeerAcid(acidFilteredArray)
+      }
+      if(acidChecked && classicChecked){
+        const acidFilteredArray = beers.filter(beer => beer.ph <=4 && beer.abv > 6)
+        setBeerAcid(acidFilteredArray)
+      } else if (acidChecked){
         const acidFilteredArray = beers.filter(beer => beer.ph <=4)
         setBeerAcid(acidFilteredArray)
       }
