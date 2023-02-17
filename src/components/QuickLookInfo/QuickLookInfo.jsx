@@ -1,5 +1,4 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
 import blackCross from "../../assets/images/black-cross.png";
 import Button from '../Button/Button';
 import "./QuickLookInfo.scss"
@@ -9,7 +8,7 @@ const QuickLookInfo = (props) => {
     const {image, title, tagline, description, toggleQuickLook} = props
 
     const removeLink = (event) => {
-        if (event.target.innerHTML != "View Full Details"){
+        if (event.target.innerHTML !== "View Full Details"){
             event.preventDefault()
         }
       }

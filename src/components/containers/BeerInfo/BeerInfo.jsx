@@ -23,10 +23,11 @@ const BeerInfo = (props) => {
     maltNameArr.push(maltArr[index].name)
   }
 
-  const foodListJSX = foodPairingsArr.map((food) => {
+  const foodListJSX = foodPairingsArr.map((food,index) => {
     return ( 
     <FoodPairings
           food = {food}
+          key = {index}
     />
       )
   })
@@ -34,7 +35,7 @@ const BeerInfo = (props) => {
   return (
     <div className='beer-info'>
       <div className='beer-info__img-container'>
-        <img className="beer-info__image" src={targetBeer.image_url}/>
+        <img className="beer-info__image" src={targetBeer.image_url} alt={targetBeer.name}/>
       </div>
       <div className='beer-info__right-info'>
         <h3 className='beer-info__name'>{targetBeer.name}</h3>

@@ -23,7 +23,7 @@ const App = () => {
 
   const getBeers = async () => {
     const url = "https://api.punkapi.com/v2/beers";
-    const res = await fetch(url + `?abv_gt=${beerABV}` + `&brewed_before=${beerClassic}` +  `&beer_name=${searchFilteredBeer}`);
+    const res = await fetch(url + `?abv_gt=${beerABV}&brewed_before=${beerClassic}&beer_name=${searchFilteredBeer}`);
     const data = await res.json();
     console.log("this is data", data)
     setBeers(data)
@@ -35,7 +35,7 @@ const App = () => {
 
   const handleInput = (event) => {
     let searchTerm = "."
-    if(event.target.value == ""){
+    if(event.target.value === ""){
       searchTerm = "."
     } else{
       searchTerm = event.target.value.replaceAll(" ", "_")
