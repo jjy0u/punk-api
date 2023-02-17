@@ -40,7 +40,7 @@ const BeerInfo = (props) => {
         <h3>{targetBeer.name}</h3>
         <h4>{targetBeer.tagline}</h4>
         <h5>First brewed: {targetBeer.first_brewed}</h5>
-        <p>{targetBeer.descrption}</p>
+        <p>{targetBeer.description}</p>
         <p>ABV: {targetBeer.abv}%</p>
         <p>pH: {targetBeer.ph ? targetBeer.ph : "NA"}</p>
         <p>Hops: {[...new Set(hopsNameArr)].join(", ")}</p>
