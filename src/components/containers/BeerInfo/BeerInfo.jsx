@@ -38,18 +38,18 @@ const BeerInfo = (props) => {
       </div>
       <div className='beer-info__right-info'>
         <h3 className='beer-info__name'>{targetBeer.name}</h3>
-        <h4>{targetBeer.tagline}</h4>
+        <h4 className='beer-info__tagline'>{targetBeer.tagline}</h4>
         <h5>First brewed: {targetBeer.first_brewed}</h5>
-        <p>{targetBeer.description}</p>
-        <p>ABV: {targetBeer.abv}%</p>
-        <p>pH: {targetBeer.ph ? targetBeer.ph : "NA"}</p>
-        <p>Hops: {[...new Set(hopsNameArr)].join(", ")}</p>
-        <p>Malt: {[...new Set(maltNameArr)].join(", ")}</p>
-        <p>Ingredients: {ingredientsArr.join(", ")}</p>
+        <h6 className='beer-info__description'>{targetBeer.description}</h6>
+        <p><span>ABV: </span> {targetBeer.abv}%</p>
+        <p><span>pH:</span> {targetBeer.ph ? targetBeer.ph : "NA"}</p>
+        <p><span>Hops:</span> {[...new Set(hopsNameArr)].join(", ")}</p>
+        <p><span>Malt:</span> {[...new Set(maltNameArr)].join(", ")}</p>
+        <p><span>Ingredients:</span> {ingredientsArr.join(", ")}</p>
       </div>
       <div className='beer-info__bottom-info'>
-        <ul className="beer-info__food-pair">Food Parings: {foodListJSX} </ul>
-        <p className="beer-info__food-pair">Brewers Tips:{targetBeer.brewers_tips} </p>
+        <ul className="beer-info__food-pair"><span>Food Parings:</span> {foodListJSX} </ul>
+        <p className="beer-info__food-pair"><span>Brewers Tips:</span> {targetBeer.brewers_tips} </p>
       </div>
     </div>
   )

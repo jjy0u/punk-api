@@ -1,10 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 .beer-info{
     margin: 50px;
     margin-top: 50px;    
     display: flex;
     gap: 30px;
-    flex-wrap: wrap; 
-    
+    flex-wrap: wrap;     
     &__image{
         height: 450px;
     }
@@ -18,7 +18,32 @@
         align-items: center;
     }
 
-    
+    &__name{
+        margin-top: 5px;
+        font-size: 70px;
+        font-family: "New Grotesk Square THREE _WEB";
+    }
+
+    &__tagline{
+        font-size: 20px;
+    }
+
+    p{
+        margin-bottom: 10px;
+        font-weight: 500;
+    }
+
+    &__description{
+        margin-top: 25px;
+        margin-bottom: 25px;
+        line-height: 25px;
+        font-size: 20px;
+        font-weight: 500;
+    }
+
+    span{
+        font-weight: 700;
+    }
 }
 
 @media screen and (min-width: 700px) {
@@ -31,7 +56,7 @@
 
 @media screen and (min-width: 1024px) {
     .beer-info{
-        margin: 120px;
+        margin: 110px;
         margin-top: 50px;  
         
         &__img-container{
@@ -39,7 +64,7 @@
         }
 
         &__right-info{
-            width: 515px;
+            width: 570px;
         }
     }
 }
