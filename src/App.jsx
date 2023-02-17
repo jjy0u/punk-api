@@ -11,7 +11,7 @@ const App = () => {
   const [searchFilteredBeer, setSearchFilteredBeer] = useState(".")
   const [beerABV, setBeerABV] = useState("0")
   const [beerClassic, setBeerClassic] = useState("02-2023")
-  const [beerAcid, setBeerAcid] = useState()
+  const [beerAcid, setBeerAcid] = useState("")
   const [abvChecked,setAbvChecked] = useState(false)
   const [classicChecked,setClassicChecked] = useState(false)
   const [acidChecked,setAcidChecked] = useState(false)
@@ -44,21 +44,18 @@ const App = () => {
     setSearchFilteredBeer(searchTerm)
   }
 
+  console.log("beerAcid", beerAcid)
 
   const handleCheck = (event) => {  
 
     if(event.target.value ==="abv" && !abvChecked && acidChecked){
+      setBeerAcid("") 
       setBeerABV(6)
       setAbvChecked(true)
       setAbvClassName(true)
-      const beersCopy = [...beers]
-      setBeerAcid(beersCopy)
-      console.log("this is beer acid set to beers", beerAcid)
-      /*
-      const acidFilteredArray = beerAcid.filter(beer => beer.ph <= 4)
+      const acidFilteredArray = beers.filter(beer => beer.ph <= 4)
       setBeerAcid(acidFilteredArray) 
-      console.log("this is beer acid after filtering", beerAcid)
-      */
+      
     }else if (event.target.value ==="abv" && !abvChecked) {
       setBeerABV(6)
       setAbvChecked(true)

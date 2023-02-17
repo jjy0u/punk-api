@@ -1,8 +1,15 @@
 .main{
-    margin: 150px;
+    margin: 50px;
     margin-top: 50px;
     display: flex;
     flex-direction: column;
     gap: 30px;
 
+}
+
+@media screen and (min-width: 1324px) {
+    .main{
+    margin: 150px;
+    margin-top: 50px;
+    }
 }
