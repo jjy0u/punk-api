@@ -6,6 +6,8 @@
     right: 0;
     bottom: 0;
     z-index: 5;
+
+    cursor: default;
   
     &__content {
       height: 100%;
@@ -27,7 +29,6 @@
 
   }
   
-  @media screen and (min-width: 992px) {
     .quick-look {
       background-color: rgba(0,0,0,0.5);
       display: flex;
@@ -39,11 +40,77 @@
         background-color: white;
         width: 60%;
         height: 40vw;
+        color: black;
       }
   
       &__cross {
         right: 20px;
       }
+
+      &__container{
+        display: flex;
+        margin-left: 60px;
+        margin-right: 60px;
+        gap: 60px;
+      }
+
+      &__img-container{
+        width: 350px;
+        background-color: #F5F5F5;
+        display: flex;
+        justify-content: space-between;
+        justify-content: center;
+      }
+
+      &__image{
+        height: 400px;
+        margin-top: 30px;
+        margin-bottom: 40px;
+      }
+
+      &__descrip-container{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        font-weight: bold;
+      }
+
+      &__description{
+        width: 350px;
+        font-weight: normal;
+        font-size: 16px;
+      }
+
+      &__info{
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+      }
+
+      &__tagline{
+        font-size: 20px;
+        width: 350px;
+      }
+      &__name{
+        font-family: "New Grotesk Square THREE _WEB";
+        font-size: 50px;
+      }
+
+      &__button{
+        width: 350px;
+        height: 40px;
+        position: fixed;
+        bottom: 160px;
+        border: 2px solid black;
+        background-color: white;
+        color: black;
+        font-weight: bold;
+        cursor: pointer;
+
+        &:hover{
+          color: rgb(91, 90, 90);
+        }
+      }
     }
-  }
+  
   
