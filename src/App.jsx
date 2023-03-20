@@ -140,13 +140,13 @@ const App = () => {
       <div className="App">
       <Nav/>
         <Routes>
-          <Route 
+        <Route 
           path='/beer/:beerId' 
           element={<BeerInfo 
           beerArr = {beers}/>} />
 
           <Route 
-          path='/' 
+          path='/punk-api' 
           element={<Main  
           beerArr = {beerAcid? beerAcid :beers}
           handleInput={handleInput}
