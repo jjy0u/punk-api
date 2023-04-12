@@ -25,7 +25,6 @@ const App = () => {
     const url = "https://api.punkapi.com/v2/beers";
     const res = await fetch(url + `?abv_gt=${beerABV}&brewed_before=${beerClassic}&beer_name=${searchFilteredBeer}`);
     const data = await res.json();
-    console.log("this is data", data)
     setBeers(data)
   };
 
